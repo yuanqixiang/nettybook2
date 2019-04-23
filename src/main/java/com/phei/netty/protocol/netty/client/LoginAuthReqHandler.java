@@ -58,9 +58,7 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter {
         NettyMessage message = (NettyMessage) msg;
 
         // 如果是握手应答消息，需要判断是否认证成功
-        if (message.getHeader() != null
-                && message.getHeader().getType() == MessageType.LOGIN_RESP
-                .value()) {
+        if (message.getHeader() != null && message.getHeader().getType() == MessageType.LOGIN_RESP.value()) {
             byte loginResult = (byte) message.getBody();
             if (loginResult != (byte) 0) {
                 // 握手失败，关闭连接
